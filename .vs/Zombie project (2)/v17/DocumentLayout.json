@@ -1,0 +1,328 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\S5Bla\\Zombie project (2)\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|C:\\Users\\S5Bla\\Zombie project (2)\\assets\\scripts\\controlui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controlui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|C:\\Users\\S5Bla\\Zombie project (2)\\assets\\scripts\\controljugador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controljugador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|c:\\users\\s5bla\\zombie project (2)\\assets\\scripts\\armabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\armabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|c:\\users\\s5bla\\zombie project (2)\\assets\\scripts\\objetoloot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\objetoloot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|C:\\Users\\S5Bla\\Zombie project (2)\\assets\\scripts\\controlaudio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controlaudio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|C:\\Users\\S5Bla\\Zombie project (2)\\assets\\scripts\\controlmusicajuego.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controlmusicajuego.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|C:\\Users\\S5Bla\\Zombie project (2)\\assets\\scripts\\menuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\menuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|C:\\Users\\S5Bla\\Zombie project (2)\\assets\\scripts\\musicaambientebucle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\musicaambientebucle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|C:\\Users\\S5Bla\\Zombie project (2)\\assets\\scripts\\inventariojugador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\inventariojugador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|C:\\Users\\S5Bla\\Zombie project (2)\\assets\\scripts\\zonaextraccion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\zonaextraccion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|C:\\Users\\S5Bla\\Zombie project (2)\\assets\\scripts\\farolaparpadeante.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\farolaparpadeante.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|C:\\Users\\S5Bla\\Zombie project (2)\\assets\\scripts\\controllinterna.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controllinterna.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|C:\\Users\\S5Bla\\Zombie project (2)\\assets\\scripts\\armarecogible.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\armarecogible.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|C:\\Users\\S5Bla\\Zombie project (2)\\assets\\scripts\\zombiia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\zombiia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|C:\\Users\\S5Bla\\Zombie project (2)\\assets\\scripts\\generadorzombis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\generadorzombis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|C:\\Users\\S5Bla\\Zombie project (2)\\assets\\scripts\\saludjugador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\saludjugador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|C:\\Users\\S5Bla\\Zombie project (2)\\assets\\scripts\\saludzombi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\saludzombi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|C:\\Users\\S5Bla\\Zombie project (2)\\assets\\scripts\\camarasigue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A535F40E-7914-33CD-9F02-013D82130B5A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\camarasigue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\S5Bla\\Zombie project (2)\\assets\\scripts\\pistola.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:assets\\scripts\\pistola.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ArmaBase.cs",
+              "DocumentMoniker": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\ArmaBase.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ArmaBase.cs",
+              "ToolTip": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\ArmaBase.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ArmaBase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAO4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-30T13:12:03.321Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MenuPrincipal.cs",
+              "DocumentMoniker": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\MenuPrincipal.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MenuPrincipal.cs",
+              "ToolTip": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\MenuPrincipal.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MenuPrincipal.cs",
+              "ViewState": "AgIAAFsAAAAAAAAAAAA7wHEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-27T10:26:10.454Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ControlAudio.cs",
+              "DocumentMoniker": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\ControlAudio.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ControlAudio.cs",
+              "ToolTip": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\ControlAudio.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ControlAudio.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAswEsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-27T09:43:46.168Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ObjetoLoot.cs",
+              "DocumentMoniker": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\ObjetoLoot.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ObjetoLoot.cs",
+              "ToolTip": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\ObjetoLoot.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ObjetoLoot.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAwwPoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-24T09:52:54.638Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ZonaExtraccion.cs",
+              "DocumentMoniker": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\ZonaExtraccion.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ZonaExtraccion.cs",
+              "ToolTip": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\ZonaExtraccion.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ZonaExtraccion.cs",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAkwGcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-24T09:21:25.812Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ControlUI.cs",
+              "DocumentMoniker": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\ControlUI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ControlUI.cs",
+              "ToolTip": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\ControlUI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ControlUI.cs",
+              "ViewState": "AgIAALoAAAAAAAAAAAAIwMgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-24T08:53:14.975Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MusicaAmbienteBucle.cs",
+              "DocumentMoniker": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\MusicaAmbienteBucle.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MusicaAmbienteBucle.cs",
+              "ToolTip": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\MusicaAmbienteBucle.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MusicaAmbienteBucle.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAuwFcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-30T12:38:20.644Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ControlJugador.cs",
+              "DocumentMoniker": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\ControlJugador.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ControlJugador.cs",
+              "ToolTip": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\ControlJugador.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ControlJugador.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAtwA8AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T16:03:58.059Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ControlMusicaJuego.cs",
+              "DocumentMoniker": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\ControlMusicaJuego.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ControlMusicaJuego.cs",
+              "ToolTip": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\ControlMusicaJuego.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ControlMusicaJuego.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAswE4AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-27T20:08:36.678Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Pistola.cs",
+              "DocumentMoniker": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\Pistola.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Pistola.cs",
+              "ToolTip": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\Pistola.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Pistola.cs",
+              "ViewState": "AgIAAIkAAAAAAAAAAAAswJgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T18:01:54.618Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ArmaRecogible.cs",
+              "DocumentMoniker": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\ArmaRecogible.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ArmaRecogible.cs",
+              "ToolTip": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\ArmaRecogible.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ArmaRecogible.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T18:04:19.943Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ZombiIA.cs",
+              "DocumentMoniker": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\ZombiIA.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ZombiIA.cs",
+              "ToolTip": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\ZombiIA.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ZombiIA.cs",
+              "ViewState": "AgIAAKIAAAAAAAAAAAAswLgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T18:01:33.187Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "InventarioJugador.cs",
+              "DocumentMoniker": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\InventarioJugador.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\InventarioJugador.cs",
+              "ToolTip": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\InventarioJugador.cs",
+              "RelativeToolTip": "Assets\\Scripts\\InventarioJugador.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADkAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-24T09:53:43.382Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ControlLinterna.cs",
+              "DocumentMoniker": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\ControlLinterna.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ControlLinterna.cs",
+              "ToolTip": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\ControlLinterna.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ControlLinterna.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAA7wCIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-24T10:12:04.455Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "FarolaParpadeante.cs",
+              "DocumentMoniker": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\FarolaParpadeante.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\FarolaParpadeante.cs",
+              "ToolTip": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\FarolaParpadeante.cs",
+              "RelativeToolTip": "Assets\\Scripts\\FarolaParpadeante.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-25T09:14:29.291Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "SaludZombi.cs",
+              "DocumentMoniker": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\SaludZombi.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\SaludZombi.cs",
+              "ToolTip": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\SaludZombi.cs",
+              "RelativeToolTip": "Assets\\Scripts\\SaludZombi.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAkwA8AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-24T08:17:42.617Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "SaludJugador.cs",
+              "DocumentMoniker": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\SaludJugador.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\SaludJugador.cs",
+              "ToolTip": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\SaludJugador.cs",
+              "RelativeToolTip": "Assets\\Scripts\\SaludJugador.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAswDgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-24T08:40:13.351Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "GeneradorZombis.cs",
+              "DocumentMoniker": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\GeneradorZombis.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GeneradorZombis.cs",
+              "ToolTip": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\GeneradorZombis.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GeneradorZombis.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAswB0AAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-24T09:20:07.116Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "CamaraSigue.cs",
+              "DocumentMoniker": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\CamaraSigue.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CamaraSigue.cs",
+              "ToolTip": "C:\\Users\\S5Bla\\Zombie project (2)\\Assets\\Scripts\\CamaraSigue.cs",
+              "RelativeToolTip": "Assets\\Scripts\\CamaraSigue.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T18:00:54.797Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
