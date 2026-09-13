@@ -1,23 +1,23 @@
 using UnityEngine;
-
 public class ArmaRecogible : MonoBehaviour
 {
-    [Header("Configuración")]
-    public string nombreArma = "Pistola 9mm";
     public float distanciaRecogida = 2.5f;
 
     private Transform jugador;
+    private ArmaBase armaBase;
     private bool jugadorCerca = false;
 
     void Start()
     {
         GameObject jugadorObj = GameObject.Find("Player");
         if (jugadorObj != null) jugador = jugadorObj.transform;
+
+        armaBase = GetComponent<ArmaBase>();
     }
 
     void Update()
     {
-        if (jugador == null) return;
+        if (jugador == null || armaBase == null) return;
 
         float distancia = Vector3.Distance(transform.position, jugador.position);
 
@@ -26,7 +26,7 @@ public class ArmaRecogible : MonoBehaviour
             if (!jugadorCerca)
             {
                 jugadorCerca = true;
-                Debug.Log("Presiona [E] para recoger " + nombreArma);
+                Debug.Log("Presiona [E] para recoger " + armaBase.nombreArma);
             }
 
             if (Input.GetKeyDown(KeyCode.E))
@@ -42,12 +42,10 @@ public class ArmaRecogible : MonoBehaviour
 
     void RecogerArma()
     {
-        // Le avisamos al jugador que ha equipado el arma
         ControlJugador control = jugador.GetComponent<ControlJugador>();
         if (control != null)
         {
-            control.EquiparArma();
-            Destroy(gameObject); // Eliminamos el objeto tirado en el suelo
+            control.EquiparNuevaArma(armaBase);
         }
     }
 

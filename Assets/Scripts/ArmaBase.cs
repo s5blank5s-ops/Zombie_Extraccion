@@ -1,21 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static InventarioMunicion;
 
 public class ArmaBase : MonoBehaviour
 {
     public enum TipoModoDisparo { Semiautomatico, Automatico, Escopeta }
+    public enum TipoRanuraArma { Principal, Secundaria } // <-- AÑADIDO: Clasificación de ranuras
+
+    [Header("Estado del Arma")]
+    public bool enElSuelo = true; // Si es true, ignora las entradas de disparo
 
     [Header("Tipo de Arma")]
     public string nombreArma = "Arma";
     public TipoModoDisparo modoDisparo = TipoModoDisparo.Semiautomatico;
+    public TipoRanuraArma ranuraArma = TipoRanuraArma.Principal; // <-- AÑADIDO: Definición explícita
+    public InventarioMunicion.TipoMunicion tipoMunicion = InventarioMunicion.TipoMunicion.Pistola;
 
     [Header("Configuración de Disparo")]
     public float dañoPorBala = 25f;
     public float alcance = 20f;
     public float cadenciaDisparo = 0.3f; // Tiempo entre disparos
     public int perdigonesPorDisparo = 8;  // Solo se usa si es modo Escopeta
-    public float dispersionEscopeta = 0.1f; // Apertura del perdigonada
+    public float dispersionEscopeta = 0.1f; // Apertura de la perdigonada
 
     [Header("Munición y Recarga")]
     public int municionCargador = 12;
@@ -31,39 +38,45 @@ public class ArmaBase : MonoBehaviour
     [Header("Efectos de Audio")]
     public AudioClip sonidoDisparoCustom; // Opcional si quieres sonidos únicos por arma
 
+    [Header("Dispersión y Apuntado")]
+    public float dispersionCadera = 0.15f;    // Dispersión sin apuntar (cadera)
+    public float dispersionApuntando = 0.02f; // Dispersión casi nula al apuntar (precisión)
+
     private float tiempoSiguienteDisparo = 0f;
     private bool estaRecargando = false;
     private ControlJugador scriptJugador;
 
     void Start()
     {
-        GameObject jugador = GameObject.Find("Player");
-        if (jugador != null)
-            scriptJugador = jugador.GetComponent<ControlJugador>();
+        BuscarReferenciaJugador();
     }
 
     void Update()
     {
-        // Detectar entrada según el modo de disparo
-        if (modoDisparo == TipoModoDisparo.Automatico)
+        // Si el arma está en el suelo, no procesamos ni disparo ni recarga desde este script
+        if (enElSuelo) return;
+
+        // Comprobación constante por si cambia de padre al equiparse
+        if (scriptJugador == null)
         {
-            if (Input.GetButton("Fire1")) // Mantener pulsado para Rifle de Asalto
-            {
-                IntentarDisparar();
-            }
-        }
-        else
-        {
-            if (Input.GetButtonDown("Fire1")) // Un solo clic para Pistola / Escopeta
-            {
-                IntentarDisparar();
-            }
+            BuscarReferenciaJugador();
         }
 
-        // Recarga
+        // Recarga automática al pulsar R cuando está equipada
         if (Input.GetKeyDown(KeyCode.R) && !estaRecargando && municionCargador < capacidadCargador && municionReserva > 0)
         {
             StartCoroutine(Recargar());
+        }
+    }
+
+    private void BuscarReferenciaJugador()
+    {
+        scriptJugador = GetComponentInParent<ControlJugador>();
+        if (scriptJugador == null)
+        {
+            GameObject jugadorObj = GameObject.Find("Player");
+            if (jugadorObj != null)
+                scriptJugador = jugadorObj.GetComponent<ControlJugador>();
         }
     }
 
@@ -103,17 +116,34 @@ public class ArmaBase : MonoBehaviour
         ReproducirSonidoDisparo();
         municionCargador--;
 
+        if (scriptJugador == null) BuscarReferenciaJugador();
         if (scriptJugador != null)
+        {
             scriptJugador.GenerarRuidoDisparo(15f);
+        }
 
-        RaycastHit hit;
+        Vector3 origen = puntoDisparo != null ? puntoDisparo.position : transform.position;
+        Vector3 direccionBase = puntoDisparo != null ? puntoDisparo.forward : transform.forward;
+
+        // Determinar si el jugador está apuntando
+        bool apuntando = scriptJugador != null && scriptJugador.estaApuntando;
+        float factorDispersion = apuntando ? dispersionApuntando : dispersionCadera;
+
+        // Aplicar la desviación de la bala
+        Vector3 dispersion = new Vector3(
+            Random.Range(-factorDispersion, factorDispersion),
+            0f, // Mantener nivelado en el eje vertical en juegos 2D/Top-Down
+            Random.Range(-factorDispersion, factorDispersion)
+        );
+
+        Vector3 direccionFinal = (direccionBase + dispersion).normalized;
         Vector3 puntoDestino;
 
-        if (Physics.Raycast(puntoDisparo.position, puntoDisparo.forward, out hit, alcance, capasImpacto))
+        if (Physics.Raycast(origen, direccionFinal, out RaycastHit hit, alcance, capasImpacto))
         {
             puntoDestino = hit.point;
 
-            SaludZombi zombi = hit.collider.GetComponent<SaludZombi>();
+            SaludZombi zombi = hit.collider.GetComponentInParent<SaludZombi>();
             if (zombi != null)
             {
                 zombi.RecibirDanio(dañoPorBala);
@@ -121,41 +151,48 @@ public class ArmaBase : MonoBehaviour
         }
         else
         {
-            puntoDestino = puntoDisparo.position + puntoDisparo.forward * alcance;
+            puntoDestino = origen + direccionFinal * alcance;
         }
 
         if (rastroBalaPrefab != null)
         {
-            StartCoroutine(DibujarRastroBala(puntoDisparo.position, puntoDestino));
+            StartCoroutine(DibujarRastroBala(origen, puntoDestino));
         }
     }
-
-    // --- DISPARO DE ESCOPETA (Múltiples perdigones con dispersión) ---
+    // --- DISPARO DE ESCOPETA ---
     void DispararEscopeta()
     {
         ReproducirSonidoDisparo();
         municionCargador--;
 
+        if (scriptJugador == null) BuscarReferenciaJugador();
         if (scriptJugador != null)
-            scriptJugador.GenerarRuidoDisparo(25f); // La escopeta atrae zombis desde más lejos
+        {
+            scriptJugador.GenerarRuidoDisparo(25f);
+        }
+
+        Vector3 origen = puntoDisparo != null ? puntoDisparo.position : transform.position;
+        Vector3 direccionBase = puntoDisparo != null ? puntoDisparo.forward : transform.forward;
+
+        bool apuntando = scriptJugador != null && scriptJugador.estaApuntando;
+        float factorDispersion = apuntando ? (dispersionEscopeta * 0.4f) : dispersionEscopeta;
 
         for (int i = 0; i < perdigonesPorDisparo; i++)
         {
-            // Calculamos un cono de dispersión aleatorio
-            Vector3 direccionConDispersion = puntoDisparo.forward + new Vector3(
-                Random.Range(-dispersionEscopeta, dispersionEscopeta),
-                Random.Range(-dispersionEscopeta, dispersionEscopeta),
-                Random.Range(-dispersionEscopeta, dispersionEscopeta)
+            Vector3 dispersion = new Vector3(
+                Random.Range(-factorDispersion, factorDispersion),
+                0f,
+                Random.Range(-factorDispersion, factorDispersion)
             );
 
-            RaycastHit hit;
+            Vector3 direccionFinal = (direccionBase + dispersion).normalized;
             Vector3 puntoDestino;
 
-            if (Physics.Raycast(puntoDisparo.position, direccionConDispersion, out hit, alcance, capasImpacto))
+            if (Physics.Raycast(origen, direccionFinal, out RaycastHit hit, alcance, capasImpacto))
             {
                 puntoDestino = hit.point;
 
-                SaludZombi zombi = hit.collider.GetComponent<SaludZombi>();
+                SaludZombi zombi = hit.collider.GetComponentInParent<SaludZombi>();
                 if (zombi != null)
                 {
                     zombi.RecibirDanio(dañoPorBala);
@@ -163,12 +200,12 @@ public class ArmaBase : MonoBehaviour
             }
             else
             {
-                puntoDestino = puntoDisparo.position + direccionConDispersion * alcance;
+                puntoDestino = origen + direccionFinal * alcance;
             }
 
             if (rastroBalaPrefab != null)
             {
-                StartCoroutine(DibujarRastroBala(puntoDisparo.position, puntoDestino));
+                StartCoroutine(DibujarRastroBala(origen, puntoDestino));
             }
         }
     }
@@ -190,24 +227,40 @@ public class ArmaBase : MonoBehaviour
     IEnumerator DibujarRastroBala(Vector3 inicio, Vector3 fin)
     {
         TrailRenderer rastro = Instantiate(rastroBalaPrefab, inicio, Quaternion.identity);
-        float velocidad = 200f;
+        float velocidad = 250f;
         float distancia = Vector3.Distance(inicio, fin);
-        float tiempoTotal = distancia / velocidad;
-        float tiempoTranscurrido = 0f;
 
-        while (tiempoTranscurrido < tiempoTotal)
+        if (distancia > 0f)
         {
-            rastro.transform.position = Vector3.Lerp(inicio, fin, tiempoTranscurrido / tiempoTotal);
-            tiempoTranscurrido += Time.deltaTime;
-            yield return null;
+            float tiempoTotal = distancia / velocidad;
+            float tiempoTranscurrido = 0f;
+
+            while (tiempoTranscurrido < tiempoTotal)
+            {
+                if (rastro == null) break;
+                rastro.transform.position = Vector3.Lerp(inicio, fin, tiempoTranscurrido / tiempoTotal);
+                tiempoTranscurrido += Time.deltaTime;
+                yield return null;
+            }
         }
 
-        rastro.transform.position = fin;
-        Destroy(rastro.gameObject, rastro.time);
+        if (rastro != null)
+        {
+            rastro.transform.position = fin;
+            Destroy(rastro.gameObject, rastro.time);
+        }
     }
 
     IEnumerator Recargar()
     {
+        if (InventarioMunicion.Instancia == null) yield break;
+
+        int reservaDisponible = InventarioMunicion.Instancia.ObtenerReserva(tipoMunicion);
+        int balasNecesarias = capacidadCargador - municionCargador;
+
+        // Si no necesita balas o no hay reserva disponible, se cancela
+        if (balasNecesarias <= 0 || reservaDisponible <= 0) yield break;
+
         estaRecargando = true;
 
         AudioSource audioRecargaTemp = gameObject.AddComponent<AudioSource>();
@@ -228,11 +281,11 @@ public class ArmaBase : MonoBehaviour
             Destroy(audioRecargaTemp);
         }
 
-        int balasNecesarias = capacidadCargador - municionCargador;
-        int balasARecargar = Mathf.Min(balasNecesarias, municionReserva);
+        // Calculamos cuántas balas tomar de la reserva global
+        int balasARecargar = Mathf.Min(balasNecesarias, reservaDisponible);
 
         municionCargador += balasARecargar;
-        municionReserva -= balasARecargar;
+        InventarioMunicion.Instancia.RestarMunicion(tipoMunicion, balasARecargar);
 
         estaRecargando = false;
     }

@@ -11,6 +11,9 @@ public class ZombiIA : MonoBehaviour
     public float velocidadHorda = 6.0f;
     public float tiempoMemoriaPersecucion = 4.0f; // Segundos que te sigue buscando tras perderte de vista
 
+    [Header("Estado de Alerta y Sigilo")]
+    public bool estaAlertado = false; // Indica si el zombi está persiguiendo o en alerta
+
     [Header("Detección por Visión")]
     public float rangoVision = 12f;
     public float anguloVision = 60f;
@@ -42,6 +45,7 @@ public class ZombiIA : MonoBehaviour
         if (jugador != null && perseguirSiempre && agente != null)
         {
             agente.SetDestination(jugador.position);
+            estaAlertado = true;
         }
     }
 
@@ -62,6 +66,7 @@ public class ZombiIA : MonoBehaviour
         if (loVe || loOye)
         {
             detectado = true;
+            estaAlertado = true; // Sabe que el jugador está cerca o lo vio
             tiempoUltimaDeteccion = Time.time;
         }
 
@@ -69,6 +74,7 @@ public class ZombiIA : MonoBehaviour
         if (!perseguirSiempre && Time.time - tiempoUltimaDeteccion > tiempoMemoriaPersecucion)
         {
             detectado = false;
+            estaAlertado = false; // Vuelve a estar desprevenido para sigilo
         }
 
         // 2. Comportamiento según estado
@@ -133,8 +139,8 @@ public class ZombiIA : MonoBehaviour
         float ruidoActual = scriptJugador.ObtenerNivelRuido();
         float radioAudicion = rangoOidoBase * ruidoActual;
 
-        // Si el jugador está MUY cerca (ej. pegado a su espalda a < 1.5m), lo oye aunque esté quieto
-        if (distancia <= 1.5f) return true;
+        // Permite acercarse por detrás si el jugador va agachado (ruidoActual bajo, ej. 0.2f)
+        if (distancia <= 1.5f && ruidoActual > 0.5f) return true;
 
         return distancia <= radioAudicion;
     }
@@ -151,6 +157,7 @@ public class ZombiIA : MonoBehaviour
     public void AlertaPorRuido(Vector3 posicionRuido)
     {
         detectado = true;
+        estaAlertado = true;
         tiempoUltimaDeteccion = Time.time;
 
         if (agente != null)
@@ -162,6 +169,7 @@ public class ZombiIA : MonoBehaviour
     public void ActivarModoHorda()
     {
         perseguirSiempre = true;
+        estaAlertado = true;
         BuscarJugador();
 
         if (agente == null) agente = GetComponent<NavMeshAgent>();

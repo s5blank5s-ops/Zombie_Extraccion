@@ -11,9 +11,18 @@ public class ControlJugador : MonoBehaviour
     public float alturaDePie = 2f;
     public float alturaAgachado = 1f;
 
-    [Header("Arma Equipada")]
-    public GameObject modeloPistolaEnMano;
-    public ArmaBase pistolaEquipada;
+    [Header("Armas y Anclaje")]
+    public Transform puntoAnclajeArma; // Objeto PuntoArma
+    public ArmaBase armaPrincipal;    // Ranura 1
+    public ArmaBase armaSecundaria;   // Ranura 2
+    public ArmaBase armaActual;       // Arma activa
+
+    [Header("Ajustes de Apuntado y Cámara")]
+    public bool estaApuntando = false;
+    public float fovNormal = 60f;        // FOV base de la cámara
+    public float fovApuntando = 45f;     // FOV con zoom al apuntar
+    public float offsetAvanceCamara = 2f; // Desplazamiento sutil hacia la mira
+    public float velocidadTransicionCamara = 8f;
 
     [Header("Audio de Pasos")]
     public float cadenciaPasosCaminar = 0.5f;
@@ -23,30 +32,43 @@ public class ControlJugador : MonoBehaviour
     private float velActual;
     private float nivelRuido = 1f;
     private bool estaAgachado = false;
-    private bool tieneArma = false;
 
     private Rigidbody rb;
     private Camera camaraPrincipal;
+    private Vector3 offsetCamaraOriginal;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         camaraPrincipal = Camera.main;
         velActual = velCaminar;
+
+        if (camaraPrincipal != null)
+        {
+            fovNormal = camaraPrincipal.fieldOfView;
+            // Guardamos la posición relativa inicial respecto al jugador
+            offsetCamaraOriginal = camaraPrincipal.transform.position - transform.position;
+        }
     }
 
     void Update()
     {
         ProcesarAgacharse();
         RotarHaciaRaton();
+        ProcesarApuntado();
         ControlarDisparo();
+        ControlarCambioArma();
 
-        // Comprobamos el movimiento para el sonido de los pasos
         float entradaX = Input.GetAxisRaw("Horizontal");
         float entradaZ = Input.GetAxisRaw("Vertical");
         bool estaMoviendose = new Vector3(entradaX, 0f, entradaZ).sqrMagnitude > 0.01f;
 
         ControlarSonidoPasos(estaMoviendose);
+    }
+
+    void LateUpdate()
+    {
+        ActualizarPosicionCamara();
     }
 
     void FixedUpdate()
@@ -85,16 +107,12 @@ public class ControlJugador : MonoBehaviour
             {
                 velActual = velCorrer;
                 nivelRuido = 3.5f;
-
-                // Al correr enviamos una onda directa a los zombis en un radio de 10 metros
                 AlertarZombisPorPasos(10f);
             }
             else
             {
                 velActual = velCaminar;
                 nivelRuido = 1.8f;
-
-                // Al caminar emitimos ruido a 4 metros a la redonda
                 AlertarZombisPorPasos(4f);
             }
         }
@@ -144,34 +162,164 @@ public class ControlJugador : MonoBehaviour
         }
     }
 
-    public void EquiparArma()
+    private void ProcesarApuntado()
     {
-        tieneArma = true;
-        if (modeloPistolaEnMano != null)
+        estaApuntando = Input.GetMouseButton(1);
+
+        if (camaraPrincipal != null)
         {
-            modeloPistolaEnMano.SetActive(true);
+            // Transición suave del Zoom mediante Field of View
+            float fovObjetivo = estaApuntando ? fovApuntando : fovNormal;
+            camaraPrincipal.fieldOfView = Mathf.Lerp(
+                camaraPrincipal.fieldOfView,
+                fovObjetivo,
+                Time.deltaTime * velocidadTransicionCamara
+            );
         }
-        Debug.Log("¡Arma equipada!");
     }
 
+    private void ActualizarPosicionCamara()
+    {
+        if (camaraPrincipal == null) return;
+
+        // Mantenemos la cámara centrada exactamente en la posición del jugador
+        Vector3 posicionBase = transform.position + offsetCamaraOriginal;
+
+        if (estaApuntando)
+        {
+            // Añadimos un leve desplazamiento frontal hacia la dirección donde apunta el personaje
+            Vector3 avanceApuntado = transform.forward * offsetAvanceCamara;
+            posicionBase += avanceApuntado;
+        }
+
+        // Seguimiento suave y centrado sin perder la referencia del jugador
+        camaraPrincipal.transform.position = Vector3.Lerp(
+            camaraPrincipal.transform.position,
+            posicionBase,
+            Time.deltaTime * velocidadTransicionCamara
+        );
+    }
+
+    // --- DISPARO Y RECARGA ---
     private void ControlarDisparo()
     {
-        if (tieneArma && Input.GetMouseButtonDown(0))
+        if (armaActual == null || !armaActual.gameObject.activeSelf) return;
+
+        if (armaActual.modoDisparo == ArmaBase.TipoModoDisparo.Automatico)
         {
-            if (pistolaEquipada != null)
+            if (Input.GetMouseButton(0))
             {
-                pistolaEquipada.IntentarDisparar();
+                armaActual.IntentarDisparar();
             }
+        }
+        else
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                armaActual.IntentarDisparar();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            armaActual.StartCoroutine("Recargar");
         }
     }
 
-    // Emite ruido de disparo en un radio grande
+    // --- CAMBIO DE ARMAS (1 Y 2) ---
+    private void ControlarCambioArma()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1) && armaPrincipal != null)
+        {
+            SeleccionarArma(armaPrincipal);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && armaSecundaria != null)
+        {
+            SeleccionarArma(armaSecundaria);
+        }
+    }
+
+    private void SeleccionarArma(ArmaBase nuevaArmaEnMano)
+    {
+        if (nuevaArmaEnMano == null) return;
+
+        if (armaPrincipal != null) armaPrincipal.gameObject.SetActive(false);
+        if (armaSecundaria != null) armaSecundaria.gameObject.SetActive(false);
+
+        armaActual = nuevaArmaEnMano;
+        armaActual.gameObject.SetActive(true);
+    }
+
+    // --- RECOGIDA Y SOLTADO DE ARMAS ---
+    public void EquiparNuevaArma(ArmaBase nuevaArma)
+    {
+        nuevaArma.enabled = true;
+
+        if (nuevaArma.ranuraArma == ArmaBase.TipoRanuraArma.Secundaria)
+        {
+            if (armaSecundaria != null)
+            {
+                SoltarArmaAlSuelo(armaSecundaria);
+            }
+            armaSecundaria = nuevaArma;
+        }
+        else
+        {
+            if (armaPrincipal != null)
+            {
+                SoltarArmaAlSuelo(armaPrincipal);
+            }
+            armaPrincipal = nuevaArma;
+        }
+
+        if (puntoAnclajeArma != null)
+        {
+            nuevaArma.transform.SetParent(puntoAnclajeArma);
+            nuevaArma.transform.localPosition = Vector3.zero;
+            nuevaArma.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
+        }
+
+        nuevaArma.enElSuelo = false;
+
+        ArmaRecogible recogible = nuevaArma.GetComponent<ArmaRecogible>();
+        if (recogible != null) Destroy(recogible);
+
+        Collider[] colliders = nuevaArma.GetComponentsInChildren<Collider>();
+        foreach (Collider c in colliders)
+        {
+            c.enabled = false;
+        }
+
+        SeleccionarArma(nuevaArma);
+    }
+
+    private void SoltarArmaAlSuelo(ArmaBase armaASoltar)
+    {
+        armaASoltar.transform.SetParent(null);
+        armaASoltar.transform.position = transform.position + transform.forward * 0.8f + Vector3.up * 0.1f;
+        armaASoltar.transform.rotation = Quaternion.identity;
+        armaASoltar.gameObject.SetActive(true);
+
+        armaASoltar.enElSuelo = true;
+
+        Collider[] colliders = armaASoltar.GetComponentsInChildren<Collider>();
+        foreach (Collider c in colliders)
+        {
+            c.enabled = true;
+        }
+
+        if (armaASoltar.GetComponent<ArmaRecogible>() == null)
+        {
+            ArmaRecogible nuevoRecogible = armaASoltar.gameObject.AddComponent<ArmaRecogible>();
+            nuevoRecogible.distanciaRecogida = 2.5f;
+        }
+    }
+
     public void GenerarRuidoDisparo(float radioRuido)
     {
         AlertarZombisPorPasos(radioRuido);
     }
 
-    // Método auxiliar para avisar a la IA
     private void AlertarZombisPorPasos(float radio)
     {
         Collider[] enemigosCercanos = Physics.OverlapSphere(transform.position, radio);
